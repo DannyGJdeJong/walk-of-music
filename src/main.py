@@ -26,7 +26,7 @@ audiopath = "../audio"
 
 songs = []
 for i in range(4):
-    s = pygame.mixer.Sound(os.path.join(audiopath, str(i) + ".mp3"))
+    s = pygame.mixer.Sound(os.path.join(audiopath, str(i) + ".ogg"))
     s.set_volume(100)
     songs.append(s)
 c = pygame.mixer.Channel(0)
