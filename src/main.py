@@ -3,10 +3,10 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
-GPIO.setup(26, GPIO.OUT)
+GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) 
 
-GPIO.output(26, 1)  
-
-time.sleep(5)
+while True:
+    if GPIO.input(26):
+        print("aaaa")
 
 GPIO.cleanup() 
