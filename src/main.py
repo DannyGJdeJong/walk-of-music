@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+import os
 
 STEP_PINS = [6, 13, 19, 26]
 GENRES = ["Rock"]
