@@ -1,11 +1,14 @@
 import RPi.GPIO as GPIO
 import time
 
+STEP_PINS = [6, 13, 19, 26]
+GENRES = ["Rock"]
+GENRE_PINS = []
+
 GPIO.setmode(GPIO.BCM)
 
-GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) 
-
-i = 0
+for pin in STEP_PINS:
+    GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 import pygame
 pygame.mixer.pre_init(44100, -16, 2, 1024)
@@ -13,19 +16,28 @@ pygame.init()
 pygame.mixer.quit()
 pygame.mixer.init(44100, -16, 2, 1024)
 
-s = pygame.mixer.Sound("../audio/test.ogg")
-s.set_volume(100)
+s1 = pygame.mixer.Sound("../audio/test.ogg")
+s1.set_volume(100)
+s1 = pygame.mixer.Sound("../audio/test.ogg")
+s1.set_volume(100)
+
+songs = []
+for i in range(4):
+    s = pygame.mixer.Sound("../audio/"str(i) + ".mp3")
+    s.set_volume(100)
+    songs.append(s)
 c = pygame.mixer.Channel(0)
+
 while True:
-    if GPIO.input(26):
-        c.play(s)
-        while c.get_busy() == True:
-            continue
-
-
-
-
-
+    # if GPIO.input(26):
+    #     c.play(s)
+    #     while c.get_busy() == True:
+    #         continue
+    for i in range(len(STEP_PINS)):
+        if GPIO.input(STEP_PINS[i]):
+            c.play(songs[i])
+            while c.get_busy() == True:
+                continue
 
 # pygame.mixer.pre_init(44100, -16, 1, 512)
 # pygame.mixer.music.load("../audio/test.ogg")
