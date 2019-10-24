@@ -5,8 +5,11 @@ GPIO.setmode(GPIO.BCM)
 
 GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) 
 
+i = 0
+
 while True:
     if GPIO.input(26):
-        print("aaaa")
+        i = i + 1
+        print(i)
 
 GPIO.cleanup() 
