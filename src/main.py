@@ -8,3 +8,5 @@ GPIO.setup(26, GPIO.OUT)
 GPIO.output(26, 1)  
 
 time.sleep(5)
+
+GPIO.cleanup() 
