@@ -8,7 +8,11 @@ GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 i = 0
 
 import pygame
-pygame.mixer.init(44100, -16, 1, 64)
+pygame.mixer.pre_init(44100, -16, 2, 1024)
+pygame.init()
+pygame.mixer.quit()
+pygame.mixer.init(44100, -16, 2, 1024)
+
 s = pygame.mixer.Sound("../audio/test.ogg")
 s.set_volume(100)
 c = pygame.mixer.Channel(0)
