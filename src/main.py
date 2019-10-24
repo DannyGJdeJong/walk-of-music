@@ -9,7 +9,11 @@ i = 0
 
 while True:
     if GPIO.input(26):
-        i = i + 1
-        print(i)
+        import pygame
+        pygame.mixer.init()
+        pygame.mixer.music.load("../audio/test.mpeg")
+        pygame.mixer.music.play()
+        while pygame.mixer.music.get_busy() == True:
+            continue
 
 GPIO.cleanup() 
