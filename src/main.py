@@ -15,7 +15,7 @@ every valid pad is activatable mutliple times
 
 STEP_PINS = [6, 13, 19, 26]
 GENRES = ["Jazz", "Rock", "Pop", "Disco", "Blues"]
-GENRE_PINS = [2, 3, 4, 17, 27]
+GENRE_PINS = [22, 10, 9, 11, 5]
 AUDIOPATH = "../audio"
 EXTENSION = ".ogg"
 
@@ -80,7 +80,7 @@ while True:
                 reset()
 
             # Play song associated with the current sensor
-            print("Playing: \nGenre: " + GENRES[genre] + "\nSong: " + i)
+            print("Playing: \nGenre: " + GENRES[genre] + "\nSong: " + str(i))
             c.play(songs[genre][i])
             while c.get_busy() == True:
                 continue
