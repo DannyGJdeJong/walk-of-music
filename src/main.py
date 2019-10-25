@@ -24,6 +24,9 @@ GPIO.setmode(GPIO.BCM)
 for pin in STEP_PINS:
     GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
+for pin in GENRE_PINS:
+    GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+
 # Init pygame mixer for delay-less audio output
 pygame.mixer.pre_init(44100, -16, 2, 1024)
 pygame.init()
