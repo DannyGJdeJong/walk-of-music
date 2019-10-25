@@ -35,7 +35,10 @@ songs = [[]]
 for g in range(len(GENRES)):
     ss = []
     for i in range(len(STEP_PINS)):
-        s = pygame.mixer.Sound(os.path.join(AUDIOPATH, GENRES[g] + str(i) + EXTENSION))
+        song_path = os.path.join(AUDIOPATH, GENRES[g] + str(i) + EXTENSION)
+        if not os.path.exists(song_path):
+            continue
+        s = pygame.mixer.Sound(song_path)
         s.set_volume(100)
         ss.append(s)
     songs.append(ss)
@@ -43,7 +46,7 @@ for g in range(len(GENRES)):
 c = pygame.mixer.Channel(0)
 
 # Set variables to be used between loops
-genre = 0
+genre = 1
 
 # Enter main loop
 while True:
