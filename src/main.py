@@ -54,17 +54,13 @@ c = pygame.mixer.Channel(0)
 genre = 1
 activated = 1
 
-# Define reset function
-def reset():
-    activated = 1
-
 # Enter main loop
 while True:
     for g in range(len(GENRE_PINS)):
         if GPIO.input(GENRE_PINS[g]):
             if genre != g:
                 print("Changed genre to: ", GENRES[g])
-                reset()
+                activated = 1
                 genre = g
 
     # Only check activated sensors
@@ -74,10 +70,10 @@ while True:
             # Activate another sensor if the last one is active
             if i == activated - 1:
                 activated = activated + 1
-            
+
             # Reset when last sensor is active
             if i == len(STEP_PINS) - 1:
-                reset()
+                activated = 1
 
             # Play song associated with the current sensor
             print("Playing: \nGenre: " + GENRES[genre] + "\nSong: " + str(i))
@@ -86,4 +82,4 @@ while True:
                 continue
 
 # Clean-up after running
-GPIO.cleanup() 
+GPIO.cleanup()
