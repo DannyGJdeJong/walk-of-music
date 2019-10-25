@@ -52,6 +52,10 @@ c = pygame.mixer.Channel(0)
 genre = 1
 activated = 1
 
+# Define reset function
+def reset():
+    activated = 1
+
 # Enter main loop
 while True:
     for g in range(len(GENRE_PINS)):
@@ -76,9 +80,6 @@ while True:
             c.play(songs[genre][i])
             while c.get_busy() == True:
                 continue
-
-def reset():
-    activated = 1
 
 # Clean-up after running
 GPIO.cleanup() 
