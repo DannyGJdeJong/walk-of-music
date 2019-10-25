@@ -46,6 +46,8 @@ for g in range(len(GENRES)):
         ss.append(s)
     songs.append(ss)
 
+print(songs)
+
 c = pygame.mixer.Channel(0)
 
 # Set variables to be used between loops
@@ -61,6 +63,7 @@ while True:
     for g in range(len(GENRE_PINS)):
         if GPIO.input(GENRE_PINS[g]):
             if genre != g:
+                print("Changed genre to: ", GENRES[g])
                 reset()
                 genre = g
 
@@ -77,6 +80,7 @@ while True:
                 reset()
 
             # Play song associated with the current sensor
+            print("Playing: \nGenre: " + GENRES[genre] + "\nSong: " + i)
             c.play(songs[genre][i])
             while c.get_busy() == True:
                 continue
