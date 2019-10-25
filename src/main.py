@@ -15,7 +15,7 @@ every valid pad is activatable mutliple times
 """
 
 STEP_PINS = [6, 13, 19, 26]
-GENRES = ["Pop", "Rock", "HipHop", "Disco", "Jazz"]
+GENRES = ["Pop", "Rock", "Hop", "Disco", "Jazz"]
 GENRE_PINS = [22, 10, 9, 11, 5]
 AUDIOPATH = "../audio"
 EXTENSION = ".ogg"
