@@ -67,6 +67,7 @@ while True:
     if GPIO.input(GENRE_PINS[0]) and GPIO.input(GENRE_PINS[1]):
         #genre = 5 # DnB
         genre = 3
+        print("Changed genre to: ", GENRES[3])
         while GPIO.input(GENRE_PINS[0]) or GPIO.input(GENRE_PINS[1]):
             pass
 
