@@ -15,7 +15,7 @@ every valid pad is activatable mutliple times
 """
 
 STEP_PINS = [6, 13, 19, 26]
-GENRES = ["Pop", "Rock", "Hop", "Disco", "Jazz", "DnB", "MLG"]
+GENRES = ["Pop", "Rock", "Hop", "Disco", "Jazz", "DnB", "MLG", "TOPKEK"]
 GENRE_PINS = [22, 10, 9, 11, 5]
 AUDIOPATH = "../audio"
 EXTENSION = ".ogg"
@@ -65,15 +65,19 @@ while True:
                 genre = g
     
     if GPIO.input(GENRE_PINS[0]) and GPIO.input(GENRE_PINS[1]):
-        #genre = 5 # DnB
-        genre = 3
+        genre = 5 # DnB
         print("Changed genre to: ", GENRES[3])
         while GPIO.input(GENRE_PINS[0]) or GPIO.input(GENRE_PINS[1]):
             pass
 
     if GPIO.input(GENRE_PINS[2]) and GPIO.input(GENRE_PINS[3]):
-        genre = 6 # DnB
-        while GPIO.input(GENRE_PINS[0]) or GPIO.input(GENRE_PINS[1]):
+        genre = 6 # MLG
+        while GPIO.input(GENRE_PINS[2]) or GPIO.input(GENRE_PINS[3]):
+            pass
+
+    if GPIO.input(GENRE_PINS[3]) and GPIO.input(GENRE_PINS[4]):
+        genre = 7 # Tunnelrave
+        while GPIO.input(GENRE_PINS[3]) or GPIO.input(GENRE_PINS[4]):
             pass
 
     # Only check activated sensors
